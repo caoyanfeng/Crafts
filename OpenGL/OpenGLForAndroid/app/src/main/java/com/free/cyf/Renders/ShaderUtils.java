@@ -2,6 +2,8 @@ package com.free.cyf.Renders;
 
 import android.opengl.GLES30;
 
+import java.nio.IntBuffer;
+
 /**
  * @date: 2018-09-13
  * @description:
@@ -86,10 +88,31 @@ public class ShaderUtils {
                 GLES30.glDeleteProgram(programId);
                 return 0;
             }
+            printVertexInputAttr(programId);
             return programId;
         } else {
             //创建失败
             return 0;
+        }
+    }
+
+    /**
+     * 输出所有active attr
+     * vPosition,0
+     * aColor,1
+     */
+    private static void printVertexInputAttr(int programId) {
+        IntBuffer attrsBuffer = IntBuffer.allocate(1);
+        GLES30.glGetProgramiv(programId, GLES30.GL_ACTIVE_ATTRIBUTES, attrsBuffer);
+        IntBuffer maxLenBuffer = IntBuffer.allocate(1);
+        GLES30.glGetProgramiv(programId, GLES30.GL_ACTIVE_ATTRIBUTE_MAX_LENGTH, maxLenBuffer);
+        System.out.println(attrsBuffer.get(0) + "," + maxLenBuffer.get(0));
+        IntBuffer size = IntBuffer.allocate(1);
+        IntBuffer type = IntBuffer.allocate(1);
+        for (int i = 0; i < attrsBuffer.get(0); i++) {
+            String attrName = GLES30.glGetActiveAttrib(programId, i, size, type);
+            int location = GLES30.glGetAttribLocation(programId, attrName);
+            System.out.println(attrName + "," + location);
         }
     }
 
