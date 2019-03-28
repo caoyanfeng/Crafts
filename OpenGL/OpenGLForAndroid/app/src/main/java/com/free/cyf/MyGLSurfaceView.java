@@ -5,6 +5,7 @@ import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
 
+import com.free.cyf.Renders.RectangleRenderer;
 import com.free.cyf.Renders.SimpleRenderer;
 
 class MyGLSurfaceView extends GLSurfaceView {
@@ -20,7 +21,7 @@ class MyGLSurfaceView extends GLSurfaceView {
         // Create an OpenGL ES 2.0 context
         setEGLContextClientVersion(2);
 
-        mRenderer = new SimpleRenderer();
+        mRenderer = new RectangleRenderer();
 
         // Set the Renderer for drawing on the GLSurfaceView
         setRenderer(mRenderer);
