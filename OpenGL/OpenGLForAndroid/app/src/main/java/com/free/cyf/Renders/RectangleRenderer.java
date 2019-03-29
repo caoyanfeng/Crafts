@@ -114,6 +114,16 @@ public class RectangleRenderer implements GLSurfaceView.Renderer {
 
         GLES30.glEnableVertexAttribArray(aColorLocation);
 
+        print();
+    }
+
+    /**
+     * 所有OpenGL ES 3.0实现必须支持最少16个顶点属性
+     */
+    private void print() {
+        int[] maxVertexAttribs = new int[1];
+        GLES30.glGetIntegerv(GLES30.GL_MAX_VERTEX_ATTRIBS, maxVertexAttribs, 0);
+        System.out.println("maxVertexAttribs:" + maxVertexAttribs[0]);
     }
 
     @Override
