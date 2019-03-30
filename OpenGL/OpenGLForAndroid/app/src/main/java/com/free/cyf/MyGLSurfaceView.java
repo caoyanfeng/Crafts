@@ -5,6 +5,7 @@ import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.util.AttributeSet;
 
+import com.free.cyf.Renders.EnableVertexRenderer;
 import com.free.cyf.Renders.RectangleRenderer;
 import com.free.cyf.Renders.SimpleRenderer;
 import com.free.cyf.Renders.VertexPointerRenderer;
@@ -22,7 +23,7 @@ class MyGLSurfaceView extends GLSurfaceView {
         // Create an OpenGL ES 2.0 context
         setEGLContextClientVersion(2);
 
-        mRenderer = new VertexPointerRenderer();
+        mRenderer = new EnableVertexRenderer();
 
         // Set the Renderer for drawing on the GLSurfaceView
         setRenderer(mRenderer);
