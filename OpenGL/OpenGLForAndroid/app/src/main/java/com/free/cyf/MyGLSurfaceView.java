@@ -10,6 +10,7 @@ import com.free.cyf.Renders.RectangleRenderer;
 import com.free.cyf.Renders.SimpleRenderer;
 import com.free.cyf.Renders.UniformRenderer;
 import com.free.cyf.Renders.VertexPointerRenderer;
+import com.free.cyf.cookbook.ScenebasicUniform;
 
 class MyGLSurfaceView extends GLSurfaceView {
 
@@ -24,7 +25,7 @@ class MyGLSurfaceView extends GLSurfaceView {
         // Create an OpenGL ES 2.0 context
         setEGLContextClientVersion(2);
 
-        mRenderer = new UniformRenderer();
+        mRenderer = new ScenebasicUniform();
 
         // Set the Renderer for drawing on the GLSurfaceView
         setRenderer(mRenderer);
