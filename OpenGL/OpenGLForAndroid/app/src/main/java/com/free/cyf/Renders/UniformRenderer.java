@@ -3,6 +3,7 @@ package com.free.cyf.Renders;
 
 import android.opengl.GLES30;
 import android.opengl.GLSurfaceView;
+import android.opengl.Matrix;
 import android.util.Log;
 
 import com.free.cyf.R;
@@ -49,6 +50,19 @@ public class UniformRenderer implements GLSurfaceView.Renderer {
 
             Log.d(TAG, "uniformName=" + uniformName + " location=" + location + " type=" + type[0] + " size=" + size[0]);
         }
+        matrix();
+    }
+
+    /**
+     * detail:
+     *
+     * https://blog.csdn.net/byhook/article/details/83759218
+     * https://blog.csdn.net/baozi3026/article/details/7319295
+     * */
+    private void matrix(){
+        float[] mMatrix = new float[16];
+        Matrix.orthoM(mMatrix,0,-1,1,-1,1,-1,1);
+        Log.d(TAG,mMatrix.toString());
     }
 
     @Override
